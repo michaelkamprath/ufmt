@@ -364,3 +364,22 @@ fn hex() {
 
     // <i8 as std::fmt::Display>::fmt(-128)
 }
+
+#[cfg(feature = "f32")]
+#[test]
+fn f32() {
+    assert_eq!(
+        uformat!("{}",0.0f32),
+        Ok("0.0".to_string()),
+    );
+
+    assert_eq!(
+        uformat!("{}",3.14159f32),
+        Ok("3.1415".to_string()),
+    );
+
+    assert_eq!(
+        uformat!("{}",1f32/4f32),
+        Ok("0.2500".to_string()),
+    );
+}

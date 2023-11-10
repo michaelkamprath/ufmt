@@ -14,12 +14,14 @@ version = "0.2.0"
 [dependencies]
 ufmt-macros = { path = "macros", version = "0.3.0" }
 ufmt-write = { path = "write", version = "0.1.0" }
+micromath = { version = "2", optional = true }
 
 # NOTE do NOT add an `alloc` feature before the alloc crate can be used in
 # no-std BINARIES
 [features]
 # NOTE do NOT turn `std` into a default feature; this is a no-std first crate
 std = ["ufmt-write/std"]
+f32 = ["dep:micromath"]
 
 [[test]]
 name = "vs-std-write"
