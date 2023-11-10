@@ -375,7 +375,7 @@ fn f32() {
 
     assert_eq!(
         uformat!("{}",3.14159f32),
-        Ok("3.1415".to_string()),
+        Ok("3.1416".to_string()),
     );
 
     assert_eq!(
