@@ -382,4 +382,9 @@ fn f32() {
         uformat!("{}",1f32/4f32),
         Ok("0.2500".to_string()),
     );
+
+    assert_eq!(
+        uformat!("{}",-8.888f32),
+        Ok("-8.8880".to_string()),
+    );
 }

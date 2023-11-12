@@ -12,7 +12,7 @@ impl uDebug for f32 {
 
         let prec = 10000.0;
         let negative_flag = (*self).is_sign_negative();
-        let base = (*self).trunc() as i32;
+        let base = (*self).trunc().abs() as i32;
         let decimal = if negative_flag {
             (-(*self).fract() * prec).round() as u32
         } else {
