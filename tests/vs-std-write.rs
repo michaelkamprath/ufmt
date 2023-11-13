@@ -387,4 +387,24 @@ fn f32() {
         uformat!("{}",-8.888f32),
         Ok("-8.8880".to_string()),
     );
+
+    assert_eq!(
+        uformat!("{}",-0.000000),
+        Ok("-0.0".to_string()),
+    );
+
+    assert_eq!(
+        uformat!("{}", 0.0f32/0.0f32),
+        Ok("NaN".to_string()),
+    );
+
+    assert_eq!(
+        uformat!("{}", 1.0f32/0.0f32),
+        Ok("Inf".to_string()),
+    );
+
+    assert_eq!(
+        uformat!("{}", -1.0f32/0.0f32),
+        Ok("-Inf".to_string()),
+    );
 }

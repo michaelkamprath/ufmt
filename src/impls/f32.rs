@@ -10,6 +10,20 @@ impl uDebug for f32 {
         #[cfg(not(feature = "std"))]
         use micromath::F32Ext;
 
+        if self.is_nan() {
+            return f.write_str("NaN");
+        } else if self.is_infinite() {
+            if self.is_sign_positive() {
+                return f.write_str("Inf");
+            } else {
+                return f.write_str("-Inf");
+            }
+        } else if *self == 0.0 && self.is_sign_negative() {
+            return f.write_str("-0.0");
+        } else if *self == 0.0 && self.is_sign_positive() {
+            return f.write_str("0.0");
+        }
+
         let prec = 10000.0;
         let negative_flag = (*self).is_sign_negative();
         let base = (*self).trunc().abs() as i32;
